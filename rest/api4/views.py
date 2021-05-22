@@ -1,6 +1,8 @@
 from .models import Truck
 from .serializers import TruckSerializer
 from rest_framework import mixins, generics
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 class GenericAPIView(generics.GenericAPIView, 
             mixins.ListModelMixin, 
@@ -13,6 +15,9 @@ class GenericAPIView(generics.GenericAPIView,
     queryset = Truck.objects.all()
 
     lookup_field = 'pk'
+
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, pk=None):
 
