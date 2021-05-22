@@ -21,7 +21,7 @@ class TruckAPIView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class TrucDetailskAPIView(APIView):
+class TruckDetailsAPIView(APIView):
 
     def get_object(self, id):
         try:
